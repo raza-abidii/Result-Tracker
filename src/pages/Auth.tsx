@@ -6,7 +6,9 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { GraduationCap, Lock } from "lucide-react";
+import { GraduationCap, Lock, Home } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Link } from "react-router-dom";
 import { z } from "zod";
 
 const authSchema = z.object({
@@ -153,6 +155,17 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-secondary/10 flex items-center justify-center p-4">
+      {/* Top Navigation */}
+      <div className="absolute top-4 right-4 flex items-center gap-3">
+        <ThemeToggle />
+        <Link to="/">
+          <Button variant="outline" size="sm" className="gap-2">
+            <Home className="w-4 h-4" />
+            Home
+          </Button>
+        </Link>
+      </div>
+
       <Card className="w-full max-w-md p-8 shadow-lg">
         <div className="flex items-center justify-center gap-3 mb-6">
           <Lock className="w-8 h-8 text-primary" />

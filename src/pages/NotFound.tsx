@@ -1,5 +1,8 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Home, AlertCircle } from "lucide-react";
 
 const NotFound = () => {
   const location = useLocation();
@@ -9,13 +12,25 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 underline hover:text-blue-700">
-          Return to Home
-        </a>
+    <div className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-secondary/10 flex items-center justify-center p-4">
+      {/* Theme Toggle */}
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
+      
+      <div className="text-center space-y-6">
+        <AlertCircle className="w-24 h-24 mx-auto text-destructive" />
+        <h1 className="text-6xl font-bold text-foreground">404</h1>
+        <p className="text-2xl text-muted-foreground">Oops! Page not found</p>
+        <p className="text-lg text-muted-foreground max-w-md">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <Link to="/">
+          <Button className="gap-2">
+            <Home className="w-4 h-4" />
+            Return to Home
+          </Button>
+        </Link>
       </div>
     </div>
   );

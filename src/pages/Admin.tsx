@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Upload, LogOut, FileSpreadsheet, Database, Search, Edit2, Save, X, Trash2 } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 import * as XLSX from "xlsx";
 
 const Admin = () => {
@@ -420,10 +421,13 @@ const Admin = () => {
             <h1 className="text-3xl font-bold">Admin Dashboard</h1>
             <p className="text-muted-foreground">Welcome, {user.email}</p>
           </div>
-          <Button onClick={handleLogout} variant="outline" className="gap-2">
-            <LogOut className="w-4 h-4" />
-            Logout
-          </Button>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Button onClick={handleLogout} variant="outline" className="gap-2">
+              <LogOut className="w-4 h-4" />
+              Logout
+            </Button>
+          </div>
         </header>
 
         <div className="space-y-6">

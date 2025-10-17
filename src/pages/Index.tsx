@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { GraduationCap, Search, ChevronDown, ChevronUp, User, BookOpen, Calendar, Award, Hash } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const Index = () => {
   const [hallTicket, setHallTicket] = useState("");
@@ -115,6 +116,20 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-secondary/10">
       <div className="container mx-auto px-4 py-8">
+        {/* Top Navigation */}
+        <div className="flex justify-between items-center mb-8">
+          <div className="flex items-center gap-2">
+            <GraduationCap className="w-6 h-6 text-primary" />
+            <span className="font-semibold text-primary">Exam Portal</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Link to="/auth">
+              <Button variant="outline" size="sm">Admin Login</Button>
+            </Link>
+          </div>
+        </div>
+
         <header className="text-center mb-12">
           {/* College Logo/Symbol Section */}
           <div className="mb-6">
@@ -136,11 +151,6 @@ const Index = () => {
             <h1 className="text-4xl font-bold text-foreground">Examination Results Portal</h1>
           </div>
           <p className="text-muted-foreground text-lg">Search your CIE and External examination results</p>
-          <div className="mt-6">
-            <Link to="/auth">
-              <Button variant="outline">Admin Login</Button>
-            </Link>
-          </div>
         </header>
 
         <Card className="max-w-2xl mx-auto p-8 shadow-lg">
